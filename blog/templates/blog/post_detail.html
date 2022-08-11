@@ -9,9 +9,8 @@
         <meta name="author" content="" />
         <title>{{ post.title }} - Blog</title>
 
-        <link href="{% static 'blog/bootstrap5/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" media="screen">
-        <script src="https://kit.fontawesome.com/9c6355ff01.js" crossorigin="anonymous"></script>
-
+        <link href="{% static 'blog/bootstrap/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+        <script src="https://kit.fontawesome.com/4831ef2746.js" crossorigin="anonymous"></script>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -51,6 +50,7 @@
                         </header>
 
                         <!-- Preview image figure-->
+                        <figure>
                         {% if post.head_image %}
                         <img class="img-fluid rounded" src="{{ post.head_image.url }}" alt=" <%post.title %>" /></figure>
 
@@ -66,7 +66,30 @@
                             <p>
                                 {{ post.content }}
                             </p>
+                            {% if post.file_upload %}
+                            <a href="{{ post.file_upload.url }}"
+                               type="button"
+                               class="btn btn-secondary"
+                               role="button" download>
+                                Download:
 
+                                {% if post.get_file_ext == 'csv' %}
+                                <i class="fa-solid fa-file-csv"></i>
+                                {% elif post.get_file_ext == 'xlsx' or post.get_file_ext == 'xls' %}
+                                <i class="fa-solid fa-file-excel"></i>
+                                {% elif post.get_file_ext == 'docx' or post.get_file_ext == 'doc' %}
+                                <i class="fa-solid fa-book-blank"></i>
+                                {% else %}
+                                <i class="far fa-file"></i>
+                                {% endif %}
+                                {{ post.get_file_name }}
+
+
+
+
+
+                            </a>
+                            {% endif %}
 
                         </section>
 
