@@ -106,6 +106,9 @@
                     <div class="card-body">
                         <div class="small text-muted">January 1, 2022</div>
                         <h2 class="card-title h4">{{ p.title }}</h2>
+                        <h6 class="text-muted">{{post.hook_text}}</h6>
+                            <!-- Post meta content-->
+                            <div class="text-muted fst-italic mb-2">Posted on {{ post.created_at }}by 작성자예정</div>
                         <p class="card-text">{{ p.content }}.</p>
                         <a class="btn btn-primary" href=" {{ p.get_absolute_url }}">Read more →</a>
                     </div>
