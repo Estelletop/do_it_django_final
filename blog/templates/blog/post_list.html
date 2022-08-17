@@ -6,6 +6,9 @@
     {% if category %}
     <span class="badge rounded-pill bg-warning text-dark">{{ category }}</span>
     {% endif %}
+    {% if tag %}
+        <span class="badge bg-light text-dark">{{ tag }}</span>
+    {% endif %}
 </h1>
 {% if post_list.exists %}
 <!-- Blog post-->
